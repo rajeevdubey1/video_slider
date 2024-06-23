@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:video_slider/custom_slider.dart';
+import 'package:video_slider/progress_value_provider.dart';
 import 'package:video_slider/video_progress.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -56,16 +59,19 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const Center(
-        child: Stack(
-          children:<Widget>[
-            Expanded(child: VideoProgress(),),
-            Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: CustomSlider(),),
-          ],
+      body: ChangeNotifierProvider(
+        create: (_) => ProgressValueProvider(),
+        child: const Center(
+          child: Stack(
+            children:<Widget>[
+              Expanded(child: VideoProgress(),),
+              Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: CustomSlider(),),
+            ],
+          ),
         ),
       ),
     );
