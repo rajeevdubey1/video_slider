@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
+late _VideoProgressState stateOfVideoProgress;
+
 class VideoProgress extends StatefulWidget {
   const VideoProgress({super.key});
 
   @override
-  State<VideoProgress> createState() => _VideoProgressState();
+  State<VideoProgress> createState() {
+    stateOfVideoProgress = _VideoProgressState();
+    return stateOfVideoProgress;
+  } 
 }
 
 class _VideoProgressState extends State<VideoProgress> {
-  final progress = 10.0;
+  var progress = 10.0;
 
   @override
   Widget build(BuildContext context) {
